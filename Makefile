@@ -23,7 +23,7 @@ SRC = main.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
-FLAGS = -Wall -Werror -Wextra -lncurses
+FLAGS = -Wall -Werror -Wextra
 
 CC = clang++
 
