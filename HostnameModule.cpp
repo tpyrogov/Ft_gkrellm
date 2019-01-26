@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "HostnameModule.hpp"
+#include <unistd.h>
+#include <string>
 
 HostnameModule::HostnameModule () {}
 
@@ -27,4 +29,19 @@ HostnameModule::~HostnameModule(void) {}
 HostnameModule & HostnameModule::operator=(HostnameModule const &)
 {
 	return (*this);
+}
+
+std::string HostnameModule::getHostName() {
+	char	name[1023];
+
+	gethostname(name, 1023);
+
+	std::string s(name);
+	std::string::size_type pos = s.find('.');
+
+	return (s.substr(0, pos));
+}
+
+std::string HostnameModule::getUserName() {
+	return (getenv("USER"));
 }

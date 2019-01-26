@@ -10,6 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "CpuModule.hpp"
+
 int	main() {
+	CpuModule os;
+
+	std::string s = os.getModel();
+
+	std::cout << s << std::endl << os.getUserUsage() << std::endl << os.getSysUsage() ;
 	return 0;
 }

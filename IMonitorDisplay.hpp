@@ -21,7 +21,7 @@ public:
 	IMonitorDisplay();
 	IMonitorDisplay(std::string const name);
 	IMonitorDisplay(IMonitorDisplay const &rhs);
-	~virtual IMonitorDisplay();
+	virtual ~IMonitorDisplay();
 	IMonitorDisplay &	operator=(IMonitorDisplay const & rhs);
 };
 

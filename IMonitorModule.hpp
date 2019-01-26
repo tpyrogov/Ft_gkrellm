@@ -15,14 +15,15 @@
 
 #include <iostream>
 
-class IMonitorModule
-{
+class IMonitorModule {
 public:
 	IMonitorModule();
 	IMonitorModule(std::string const name);
 	IMonitorModule(IMonitorModule const &rhs);
 	~IMonitorModule();
 	IMonitorModule &	operator=(IMonitorModule const & rhs);
+
+	virtual std::string		read_from_file(std::string name) = 0;
 };
 
 #endif

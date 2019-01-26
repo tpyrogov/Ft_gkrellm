@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <fstream>
 #include "OsInfoModule.hpp"
 
-OsInfoModule::OsInfoModule () {}
+OsInfoModule::OsInfoModule() {}
 
 OsInfoModule::OsInfoModule(OsInfoModule const &rhs) 
 {
@@ -22,9 +24,30 @@ OsInfoModule::OsInfoModule(OsInfoModule const &rhs)
 
 OsInfoModule::OsInfoModule(std::string const name) {}
 
-OsInfoModule::~OsInfoModule(void) {}
+OsInfoModule::~OsInfoModule(void) {
+
+}
 
 OsInfoModule & OsInfoModule::operator=(OsInfoModule const &)
 {
 	return (*this);
+}
+
+char	*OsInfoModule::getOSInfo() {
+	std::system("sw_vers > temp");
+	std::ifstream	file("temp", std::ios::in);
+	std::string		result = "";
+	std::string		word;
+
+	if (file) {
+
+		while (getline(file, word))
+			result += (word + "\n");
+
+		file.close();
+	}
+	remove("temp");
+	char * str = new char [result.size()];
+	strcpy(str, result.c_str());
+	return (str);
 }

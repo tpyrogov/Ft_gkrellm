@@ -22,7 +22,10 @@ public:
 	OsInfoModule(std::string const name);
 	OsInfoModule(OsInfoModule const &rhs);
 	~OsInfoModule();
+
 	OsInfoModule &	operator=(OsInfoModule const & rhs);
+
+	char *		getOSInfo();
 private:
 
 };

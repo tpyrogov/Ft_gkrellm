@@ -21,8 +21,12 @@ public:
 	HostnameModule();
 	HostnameModule(std::string const name);
 	HostnameModule(HostnameModule const &rhs);
-	~virtual HostnameModule();
+	virtual ~HostnameModule();
+
 	HostnameModule &	operator=(HostnameModule const & rhs);
+
+	std::string		getHostName();
+	std::string		getUserName();
 private:
 
 };
