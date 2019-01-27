@@ -26,15 +26,15 @@ int	main(int argc, char **argv) {
 			win.keyEvents();
 		}
 	}
-	if (argc == 2 && strcmp(argv[1], "-sdl"))
+	if (argc == 2 && strcmp(argv[1], "-sdl") == 0)
 	{
 		WinSDL win;
+
 		win.SDLInit();
 		while (42)
 		{
-			win.DrawGameName();
-			// win.putSDLInfo();
-			// win.SDLEvents();
+			win.putSDLInfo();
+			win.SDLEvents();
 		}
 	}
 	else
