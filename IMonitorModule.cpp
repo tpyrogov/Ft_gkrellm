@@ -20,8 +20,11 @@ IMonitorModule::IMonitorModule(IMonitorModule const &rhs)
 	return;
 }
 
+<<<<<<< HEAD
 // IMonitorModule::IMonitorModule(std::string const name) {}
 
+=======
+>>>>>>> b741b8f19c3a14802cc73929f1f7c3c368ba967b
 IMonitorModule::~IMonitorModule(void) {}
 
 IMonitorModule & IMonitorModule::operator=(IMonitorModule const &)
