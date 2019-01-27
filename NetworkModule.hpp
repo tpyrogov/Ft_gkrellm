@@ -14,15 +14,23 @@
 # define NETWORKMODULE_HPP
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class NetworkModule
-{
+class NetworkModule : public IMonitorModule{
 public:
 	NetworkModule();
-	NetworkModule(std::string const name);
+
 	NetworkModule(NetworkModule const &rhs);
 	~NetworkModule();
 	NetworkModule &	operator=(NetworkModule const & rhs);
+
+	virtual std::string		read_from_file(std::string name);
+
+	char	*getInPacketsNum();
+	char	*getOutPacketsNum();
+	char	*getInPacketsWeight();
+	char	*getOutPacketsWeight();
+
 private:
 
 };

@@ -19,7 +19,6 @@ class HostnameModule
 {
 public:
 	HostnameModule();
-	HostnameModule(std::string const name);
 	HostnameModule(HostnameModule const &rhs);
 	virtual ~HostnameModule();
 

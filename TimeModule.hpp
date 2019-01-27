@@ -14,15 +14,17 @@
 # define TimeModule_HPP
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class TimeModule
-{
+class TimeModule : public IMonitorModule {
 public:
 	TimeModule();
 	TimeModule(std::string const name);
 	TimeModule(TimeModule const &rhs);
 	~TimeModule();
 	TimeModule &	operator=(TimeModule const & rhs);
+
+	virtual std::string		read_from_file(std::string name);
 private:
 
 };

@@ -22,7 +22,7 @@ CpuModule::CpuModule(CpuModule const &rhs)
 	return;
 }
 
-// CpuModule::CpuModule(std::string const name) {}
+CpuModule::CpuModule(std::string const name) {}
 
 CpuModule::~CpuModule(void) {
 	IMonitorModule::~IMonitorModule();
@@ -87,9 +87,8 @@ std::string		CpuModule::read_from_file(std::string name) {
 		file.close();
 	}
 	remove("temp");
-	char * str = new char [result.size()];
-	strcpy(str, result.c_str());
-	return (str);
+
+	return (result);
 
 }
 

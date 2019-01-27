@@ -1,1 +1,1 @@
-top -l 1 -n 0 | grep "PhysMem:"
+top -l 1 -n 0 | grep "PhysMem:" | cut -d ' ' -f2 -f6

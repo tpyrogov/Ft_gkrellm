@@ -22,7 +22,7 @@ OsInfoModule::OsInfoModule(OsInfoModule const &rhs)
 	return;
 }
 
-// OsInfoModule::OsInfoModule(std::string const name) {}
+OsInfoModule::OsInfoModule(std::string const name) {}
 
 OsInfoModule::~OsInfoModule(void) {
 
@@ -48,6 +48,7 @@ std::string OsInfoModule::read_from_file(std::string name) {
 	std::string command = "sh ./resources/";
 	command.append(name);
 	std::system(command.c_str());
+
 	std::ifstream	file("temp", std::ios::in);
 	std::string		result = "";
 	std::string		word;
