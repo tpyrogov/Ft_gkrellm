@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "OsInfoModule.hpp"
+#include "HostnameModule.hpp"
 #include "CpuModule.hpp"
 #include <ncurses.h>
 
@@ -55,11 +56,13 @@ public:
 	void	NetMod();
 	void	printExtraInfo();
 	void	putInfo();
+	void	printCpu(int y, int x, float usage);
 
 private:
 	WINDOW *_win;
-	OsInfoModule osInfo;
-	CpuModule	 cpuInfo;
+	OsInfoModule _osInfo;
+	CpuModule	 _cpuInfo;
+	HostnameModule _hostName;
 	char *tab;
 };
 
