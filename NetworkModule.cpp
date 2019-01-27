@@ -20,7 +20,7 @@ NetworkModule::NetworkModule(NetworkModule const &rhs)
 	return;
 }
 
-NetworkModule::NetworkModule(std::string const name) {}
+// NetworkModule::NetworkModule(std::string const name) {}
 
 NetworkModule::~NetworkModule(void) {}
 

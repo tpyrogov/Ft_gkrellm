@@ -20,7 +20,7 @@ CpuModule::CpuModule(CpuModule const &rhs)
 	return;
 }
 
-CpuModule::CpuModule(std::string const name) {}
+// CpuModule::CpuModule(std::string const name) {}
 
 CpuModule::~CpuModule(void) {
 	IMonitorModule::~IMonitorModule();

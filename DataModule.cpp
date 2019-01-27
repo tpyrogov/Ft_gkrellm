@@ -20,7 +20,7 @@ DataModule::DataModule(DataModule const &rhs)
 	return;
 }
 
-DataModule::DataModule(std::string const name) {}
+// DataModule::DataModule(std::string const name) {}
 
 DataModule::~DataModule(void) {}
 

@@ -22,7 +22,7 @@ OsInfoModule::OsInfoModule(OsInfoModule const &rhs)
 	return;
 }
 
-OsInfoModule::OsInfoModule(std::string const name) {}
+// OsInfoModule::OsInfoModule(std::string const name) {}
 
 OsInfoModule::~OsInfoModule(void) {
 

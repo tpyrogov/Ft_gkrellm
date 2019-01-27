@@ -11,12 +11,18 @@
 /* ************************************************************************** */
 
 #include "CpuModule.hpp"
+#include "Window.hpp"
 
 int	main() {
 	CpuModule os;
-
+	Window	win;
+	win.InitScreen();
 	std::string s = os.getModel();
-
+	while (42)
+	{
+		win.createWin();
+		win.keyEvents();
+	}
 	std::cout << s << std::endl << os.getUserUsage() << std::endl << os.getSysUsage() ;
 	return 0;
 }

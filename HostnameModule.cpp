@@ -22,7 +22,7 @@ HostnameModule::HostnameModule(HostnameModule const &rhs)
 	return;
 }
 
-HostnameModule::HostnameModule(std::string const name) {}
+// HostnameModule::HostnameModule(std::string const name) {}
 
 HostnameModule::~HostnameModule(void) {}
 

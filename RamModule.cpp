@@ -20,7 +20,7 @@ RamModule::RamModule(RamModule const &rhs)
 	return;
 }
 
-RamModule::RamModule(std::string const name) {}
+// RamModule::RamModule(std::string const name) {}
 
 RamModule::~RamModule(void) {}
 

@@ -20,7 +20,7 @@ TimeModule::TimeModule(TimeModule const &rhs)
 	return;
 }
 
-TimeModule::TimeModule(std::string const name) {}
+// TimeModule::TimeModule(std::string const name) {}
 
 TimeModule::~TimeModule(void) {}
 

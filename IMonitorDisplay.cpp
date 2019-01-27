@@ -20,7 +20,7 @@ IMonitorDisplay::IMonitorDisplay(IMonitorDisplay const &rhs)
 	return;
 }
 
-IMonitorDisplay::IMonitorDisplay(std::string const name) {}
+// IMonitorDisplay::IMonitorDisplay(std::string const name) {}
 
 IMonitorDisplay::~IMonitorDisplay(void) {}
 

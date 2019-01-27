@@ -20,17 +20,18 @@ SRC = main.cpp \
 	TimeModule.cpp \
 	CpuModule.cpp	\
 	RamModule.cpp	\
+	Window.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra  -std=c++98
 
 CC = clang++
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(FLAGS)
+	$(CC) $(OBJ) -o $(NAME) $(FLAGS) -lncurses -lm
 
 %.o : %.cpp
 	$(CC) -c $< -o $@ $(FLAGS)
