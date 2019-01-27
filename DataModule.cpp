@@ -34,23 +34,27 @@ std::string DataModule::read_from_file(std::string name) {
 }
 
 char *DataModule::getTime() {
-	std::time_t  now = time(0);
-	char *buffer = new char[30];
-
+	std::time_t  now = std::time(0);
+	static const char mon_name[][4] = {
+			"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+			"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+	};
 	tm* localtm = localtime(&now);
 
-	strftime(buffer,sizeof(buffer),"%H:%M:%S", localtm);
+	sprintf(_time, "%d %s %d",
+			localtm->tm_mday, mon_name[localtm->tm_mon], 1900 + localtm->tm_year);
 
-	return (buffer);
+	return (_time);
 }
 
 char *DataModule::getDate() {
-	std::time_t  now = time(0);
-	char *buffer = new char[30];
+	std::time_t  now = std::time(0);
 
 	tm* localtm = localtime(&now);
+	std::string str_time = "";
 
-	strftime(buffer,sizeof(buffer),"%d.%m.%y", localtm);
-
-	return (buffer);
+	sprintf(_date, "%.2d:%.2d:%.2d",
+			localtm->tm_hour,
+			localtm->tm_min, localtm->tm_sec);
+	return (_date);
 }

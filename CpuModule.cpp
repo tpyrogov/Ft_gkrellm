@@ -111,4 +111,12 @@ char *CpuModule::getClockRate() {
 	return (str);
 }
 
+char *CpuModule::getLoadAvg() {
+	std::string result = read_from_file("get_load_avg.sh");
+
+	char * str = new char [result.size()];
+	strcpy(str, result.c_str());
+	return (str);
+}
+
 

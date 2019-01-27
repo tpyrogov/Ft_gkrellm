@@ -27,7 +27,8 @@ public:
 
 	virtual std::string		read_from_file(std::string name);
 private:
-
+	char		_date[10];
+	char 		_time[10];
 };
 
 #endif
