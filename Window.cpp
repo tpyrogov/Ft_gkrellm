@@ -124,6 +124,7 @@ void	Window::putRamModule() {
 	wattroff(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 8, 14, "Used memory:   %s", _ramInfo.getRamUsed());
 	mvwprintw(this->_win, 10, 14, "Free memory:   %s", _ramInfo.getRamIdle());
+	mvwprintw(this->_win, 12, 14, "Total memory:  %s", _ramInfo.getToatal());
 }
 
 void	Window::putNetwork() {
@@ -152,7 +153,7 @@ void	Window::putInfo() {
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 35, 74, "--TIME--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 36, 75, "%s", _date.getTime());
+	mvwprintw(this->_win, 36, 74, "%s", _date.getTime());
 	putCpuModule();
 	putRamModule();
 	putNetwork();

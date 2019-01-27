@@ -17,8 +17,6 @@ int	main() {
 	CpuModule os;
 	Window	win;
 	win.InitScreen();
-	// std::string s = os.getModel();
-	// win.createWin();
 	while (42)
 	{
 		win.createWin();
