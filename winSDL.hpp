@@ -12,30 +12,36 @@
 
 #ifndef	WINSDL_HPP
 # define WINSDL_HPP
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_ttf.h>
 
 class WinSDL
 {
 public:
 	WinSDL();
-	// WinSDL(std::string const name);
 	WinSDL(WinSDL const &rhs);
 	~WinSDL();
 	WinSDL &	operator=(WinSDL const & rhs);
 
-	void	InitScreen();
-	void	createWin();
-	void	keyEvents();
-	void	HostnameMod();
-	void	OsInfoMod();
-	void	TimeMod();
-	void	CpuMod();
-	void	RamMod();
-	void	NetMod();
-	void	printExtraInfo();
+	void	SDLInit();
+	void DrawGameName();
 
 private:
-	Window *_win;
-
+	SDL_Window *_win;
+	SDL_Surface *_surface;
+	TTF_Font	*_font;
+	TTF_Font	*_font2;
+	SDL_Surface *_title;
+	SDL_Surface	*_CpuInfo;
+	SDL_Surface	*_RamInfo;
+	SDL_Surface	*_HostInfo;
+	SDL_Surface	*_Date;
+	
+	OsInfoModule _osInfo;
+	CpuModule	 _cpuInfo;
+	HostnameModule _hostName;
+	DataModule	_date;
+	RamModule	_ramInfo;
 };
 
 #endif

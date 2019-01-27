@@ -57,12 +57,11 @@ public:
 	void	CpuMod();
 	void	RamMod();
 	void	NetMod();
-	void	printExtraInfo();
 	void	putInfo();
 	void	putNetwork();
 	void	putCpuModule();
 	void	putRamModule();
-	// void	printCpu(int y, int x, float usage);
+	void	printCpu(int y, int i);
 
 private:
 	WINDOW *_win;

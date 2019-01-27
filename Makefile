@@ -23,20 +23,25 @@ SRC = main.cpp \
 	Window.cpp	\
 	DataModule.cpp\
 	NetworkModule.cpp \
+	winSDL.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 FLAGS = -Wall -Werror -Wextra  -std=c++98
+
+VIZFLAG_LIB = -L ~/.brew/lib/ -lSDL2 -lSDL2_TTF
+
+VIZFLAG_INC = -I ~/.brew/include/
 
 CC = clang++
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(FLAGS) -lncurses -lm
+	$(CC) $(OBJ) -o $(NAME) $(FLAGS) -lncurses -lm $(VIZFLAG_LIB)
 
 %.o : %.cpp
-	$(CC) -c $< -o $@ $(FLAGS)
+	$(CC) -c $< -o $@ $(FLAGS) $(VIZFLAG_INC)
 
 clean:
 	rm -rf $(OBJ)
