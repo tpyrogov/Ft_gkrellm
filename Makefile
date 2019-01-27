@@ -20,7 +20,9 @@ SRC = main.cpp \
 	TimeModule.cpp \
 	CpuModule.cpp	\
 	RamModule.cpp	\
-	Window.cpp
+	Window.cpp	\
+	DataModule.cpp\
+	NetworkModule.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

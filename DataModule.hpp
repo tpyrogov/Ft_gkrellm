@@ -13,16 +13,19 @@
 #ifndef DATAMODULE_HPP
 # define DATAMODULE_HPP
 
-#include <iostream>
+#include "IMonitorModule.hpp"
 
-class DataModule
-{
+class DataModule : public IMonitorModule{
 public:
 	DataModule();
-	DataModule(std::string const name);
 	DataModule(DataModule const &rhs);
 	~DataModule();
 	DataModule &	operator=(DataModule const & rhs);
+
+	char *getTime();
+	char *getDate();
+
+	virtual std::string		read_from_file(std::string name);
 private:
 
 };

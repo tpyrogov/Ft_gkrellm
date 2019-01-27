@@ -14,6 +14,7 @@
 # define IMONITORMODULE_HPP
 
 #include <iostream>
+#include <fstream>
 
 class IMonitorModule {
 public:

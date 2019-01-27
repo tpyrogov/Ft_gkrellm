@@ -97,69 +97,65 @@ void	Window::createWin() {
 	// wrefresh(this->_win);
 }
 
-void Window::printCpu(int y, int x, float usage) {
-	mvwprintw(_win, y, x, "[");
-	int numOfBars = usage * 0.45;
-	wattron(_win, COLOR_PAIR(2));
-	for (int i = 0; i < numOfBars; i++) {
-		mvwprintw(_win, y, x + 1 + i, "|");
-	}
-	wattroff(_win, COLOR_PAIR(2));
-	mvwprintw(_win, y, x + 36, "]");
-}
+// void Window::printCpu(int y, int x, float usage) {
+// 	mvwprintw(_win, y, x, "[");
+// 	int numOfBars = usage * 0.45;
+// 	wattron(_win, COLOR_PAIR(2));
+// 	for (int i = 0; i < numOfBars; i++) {
+// 		mvwprintw(_win, y, x + 1 + i, "|");
+// 	}
+// 	wattroff(_win, COLOR_PAIR(2));
+// 	mvwprintw(_win, y, x + 36, "]");
+// }
 
-void	Window::putInfo() {
+void	Window::putCpuModule() {
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 2, 127, "--CPU MODULE--");
 	wattroff(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 6, 122, "User Usage:   %s ", _cpuInfo.getUserUsage());
-	mvwprintw(this->_win, 6, 122, "User Usage:   %s", _cpuInfo.getUserUsage());
-	mvwprintw(this->_win, 6, 122, "User Usage:   %s", _cpuInfo.getUserUsage());
 	mvwprintw(this->_win, 8, 122, "System Usage: %s", _cpuInfo.getSysUsage());
 	mvwprintw(this->_win, 10, 122, "Idle Usage:   %s", _cpuInfo.getIdleUsage());
-	mvwprintw(this->_win, 10, 122, "Idle Usage:   %s", _cpuInfo.getIdleUsage());
-	printCpu(24, 113, 10.0);
+	// printCpu(24, 113, 10.0);
 	wattron(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 22, 72, "--HOSTNAME--");
-	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 23, 71, "SHSHH");
-	wattron(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 27, 72, "--USERNAME--");
-	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 28, 71, "BLA");
-	wattron(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 31, 73, "--DATE--");
-	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 32, 71, "data");
-	wattron(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 35, 73, "--TIME--");
-	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 36, 71, "time");
-	wattron(this->_win, COLOR_PAIR(5));
+}
+
+void	Window::putRamModule() {
 	mvwprintw(this->_win, 2, 17, "--RAM MODULE--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	// mvwprintw(this->_win, 1, 122, "User Usage:   %s", cpuInfo.getUserUsage());
-	// mvwprintw(this->_win, 6, 122, "User Usage:   %s", cpuInfo.getUserUsage());
-	// mvwprintw(this->_win, 6, 122, "User Usage:   %s", cpuInfo.getUserUsage());
-	// mvwprintw(this->_win, 8, 122, "System Usage: %s", cpuInfo.getSysUsage());
+	mvwprintw(this->_win, 8, 14, "Used memory:   %s", _ramInfo.getRamUsed());
+	mvwprintw(this->_win, 10, 14, "Free memory:   %s", _ramInfo.getRamIdle());
+}
+
+void	Window::putNetwork() {
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 22, 17, "--NETWORKS--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	// mvwprintw(this->_win, 8, 122, "System Usage: %s", cpuInfo.getSysUsage());
+	mvwprintw(this->_win, 27, 17, "Packets in:");
+	mvwprintw(this->_win, 28, 17, "%s/%s", _network.getInPacketsNum(), _network.getInPacketsWeight());
+	mvwprintw(this->_win, 30, 17, "Packets out:");
+	mvwprintw(this->_win, 31, 17, "%s/%s", _network.getOutPacketsNum(), _network.getOutPacketsWeight());
+}
 
+void	Window::putInfo() {
+	wattron(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 22, 72, "--HOSTNAME--");
+	wattroff(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 23, 74, "%s", _hostName.getHostName().c_str());
+	wattron(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 27, 72, "--USERNAME--");
+	wattroff(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 28, 74, "%s", _hostName.getUserName().c_str());
+	wattron(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 31, 74, "--DATE--");
+	wattroff(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 32, 74, "%s", _date.getDate());
+	wattron(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 35, 74, "--TIME--");
+	wattroff(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 36, 75, "%s", _date.getTime());
+	putCpuModule();
+	putRamModule();
+	putNetwork();
 	wrefresh(this->_win);
-	// tab = std::strtok(osInfo.getOSInfo(), "\n");
-	// mvwprintw(this->_win, 2, 10, "%s",tab);
-	// tab[3] = std::strtok(osInfo.getOSInfo(), "\n");
-	
-	
-	// mvwprintw(this->_win, 3, 10, "%s",tab[3]);
-
-	// wrefresh(this->_win);
-	// mvwprintw(this->_win, 1, 165, T1);
-	// mvwprintw(this->_win, 1, 165, T1);
-	// mvwprintw(this->_win, 1, 165, T1);
-	// mvwprintw(this->_win, 1, 165, T1);
-	// mvwprintw(this->_win, 1, 165, T1);
 }
 

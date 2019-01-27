@@ -20,11 +20,52 @@ RamModule::RamModule(RamModule const &rhs)
 	return;
 }
 
-// RamModule::RamModule(std::string const name) {}
-
 RamModule::~RamModule(void) {}
 
 RamModule & RamModule::operator=(RamModule const &)
 {
 	return (*this);
 }
+
+std::string RamModule::read_from_file(std::string name) {
+	name.append(" > temp");
+	std::string command = "sh ./resources/";
+	command.append(name);
+	std::system(command.c_str());
+
+	std::ifstream	file("temp", std::ios::in);
+	std::string		result = "";
+	std::string		word;
+
+	if (file) {
+
+		while (getline(file, word)) {
+			result += word;
+		}
+		file.close();
+	}
+	remove("temp");
+	return (result);
+}
+
+char *RamModule::getRamUsed() {
+	std::string ram = read_from_file("get_ram.sh");
+
+	ram = ram.substr(0, ram.find(' '));
+
+	char * str = new char [ram.size()];
+	strcpy(str, ram.c_str());
+	return (str);
+}
+
+char *RamModule::getRamIdle() {
+	std::string ram = read_from_file("get_ram.sh");
+
+	ram = ram.substr(ram.find(' ') + 1);
+
+	char * str = new char [ram.size()];
+	strcpy(str, ram.c_str());
+	return (str);
+}
+
+

@@ -14,15 +14,19 @@
 # define RAMMODULE_HPP
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class RamModule
-{
+class RamModule : public IMonitorModule{
 public:
 	RamModule();
-	RamModule(std::string const name);
 	RamModule(RamModule const &rhs);
 	~RamModule();
 	RamModule &	operator=(RamModule const & rhs);
+
+	virtual std::string		read_from_file(std::string name);
+
+	char	*getRamUsed();
+	char	*getRamIdle();
 private:
 
 };

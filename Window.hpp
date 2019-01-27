@@ -17,6 +17,9 @@
 #include "OsInfoModule.hpp"
 #include "HostnameModule.hpp"
 #include "CpuModule.hpp"
+#include "DataModule.hpp"
+#include "RamModule.hpp"
+#include "NetworkModule.hpp"
 #include <ncurses.h>
 
 # define L1 "        /\\_/\\  /\\"
@@ -56,14 +59,19 @@ public:
 	void	NetMod();
 	void	printExtraInfo();
 	void	putInfo();
-	void	printCpu(int y, int x, float usage);
+	void	putNetwork();
+	void	putCpuModule();
+	void	putRamModule();
+	// void	printCpu(int y, int x, float usage);
 
 private:
 	WINDOW *_win;
 	OsInfoModule _osInfo;
 	CpuModule	 _cpuInfo;
 	HostnameModule _hostName;
-	char *tab;
+	DataModule	_date;
+	RamModule	_ramInfo;
+	NetworkModule _network;
 };
 
 #endif
