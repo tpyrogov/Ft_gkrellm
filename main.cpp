@@ -12,12 +12,11 @@
 
 #include "CpuModule.hpp"
 #include "Window.hpp"
-// #include "winSDL.hpp"
+#include "winSDL.hpp"
 
-// int	main(int argc, char **argv) {
-int main() {
-	// if (argc == 1)
-	// {
+int	main(int argc, char **argv) {
+	if (argc == 1)
+	{
 		Window	win;
 		win.InitScreen();
 		while (42)
@@ -26,7 +25,6 @@ int main() {
 			win.putInfo();
 			win.keyEvents();
 		}
-<<<<<<< HEAD
 	}
 	if (argc == 2 && strcmp(argv[1], "-sdl") == 0)
 	{
@@ -41,21 +39,5 @@ int main() {
 	}
 	else
 		return 0;
-=======
-	// }
-	// if (argc == 2 && strcmp(argv[1], "-sdl"))
-	// {
-	// 	WinSDL win;
-	// 	win.SDLInit();
-	// 	while (42)
-	// 	{
-	// 		win.DrawGameName();
-	// 		// win.putSDLInfo();
-	// 		// win.SDLEvents();
-	// 	}
-	// }
-	// else
-	// 	return 0;
->>>>>>> 0f87a0a76a15552cf09bf80736dbbd4417a163af
 	return 0;
 }

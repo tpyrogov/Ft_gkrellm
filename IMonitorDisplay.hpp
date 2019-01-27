@@ -15,8 +15,7 @@
 
 #include <iostream>
 
-class IMonitorDisplay
-{
+class IMonitorDisplay {
 public:
 	IMonitorDisplay();
 	IMonitorDisplay(std::string const name);

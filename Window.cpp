@@ -21,8 +21,6 @@ Window::Window(Window const &rhs)
 	return;
 }
 
-// Window::Window(std::string const name) {}
-
 Window::~Window(void) {}
 
 Window & Window::operator=(Window const &)

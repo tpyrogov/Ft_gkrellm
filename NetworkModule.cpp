@@ -22,8 +22,7 @@ NetworkModule::NetworkModule(NetworkModule const &rhs)
 
 NetworkModule::~NetworkModule(void) {}
 
-NetworkModule & NetworkModule::operator=(NetworkModule const &)
-{
+NetworkModule & NetworkModule::operator=(NetworkModule const &) {
 	return (*this);
 }
 

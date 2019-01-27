@@ -20,8 +20,6 @@ IMonitorDisplay::IMonitorDisplay(IMonitorDisplay const &rhs)
 	return;
 }
 
-// IMonitorDisplay::IMonitorDisplay(std::string const name) {}
-
 IMonitorDisplay::~IMonitorDisplay(void) {}
 
 IMonitorDisplay & IMonitorDisplay::operator=(IMonitorDisplay const &)

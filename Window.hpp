@@ -43,7 +43,6 @@ class Window
 {
 public:
 	Window();
-	// Window(std::string const name);
 	Window(Window const &rhs);
 	~Window();
 	Window &	operator=(Window const & rhs);

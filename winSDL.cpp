@@ -26,6 +26,7 @@ WinSDL::WinSDL(WinSDL const &rhs)
 }
 
 WinSDL::~WinSDL(void) {
+	SDL_FreeSurface(_surface);
 	SDL_DestroyWindow(_win);
 	SDL_Quit();
 	TTF_Quit();
@@ -39,33 +40,37 @@ WinSDL & WinSDL::operator=(WinSDL const &)
 void	WinSDL::putSDLInfo() {
 
 	SDL_Rect rectname = {23, 60, 20, 20};// x, y, w, h
-	SDL_Rect rect1 = {230, 10, 250, 250};
-	SDL_Rect recthost = {450, 60, 20, 20};
+	SDL_Rect rect1 = {210, 10, 250, 250};
+	SDL_Rect recthost = {415, 60, 20, 20};
 
 
-	SDL_Rect rectDate = {450, 120, 20, 20};
-	SDL_Rect rectOs = {130, 500, 20, 20};
+	SDL_Rect rectDate = {400, 120, 20, 20};
+	SDL_Rect rectOs = {110, 500, 20, 20};
 	SDL_Rect rectTime = {23, 120, 20, 20};
 
-
-	SDL_Rect rectRam1 = {130, 170, 20, 20};
-	SDL_Rect rectRam2 = {130, 220, 20, 20};
-	SDL_Rect rectRam3 = {130, 270, 20, 20};
-	SDL_Rect rectCpu1 = {23, 170, 20, 20};
-	SDL_Rect rectCpu2 = {23, 220, 20, 20};
-	SDL_Rect rectCpu3 = {23, 270, 20, 20};
+	SDL_Rect rectRam0 = {350, 190, 20, 20};
+	SDL_Rect rectRam1 = {395, 250, 20, 20};
+	SDL_Rect rectRam2 = {395, 300, 20, 20};
+	SDL_Rect rectRam3 = {395, 350, 20, 20};
 
 
-	SDL_Color c = {68, 148, 154, 0}; // r, g, b, a
+	SDL_Rect rectCpu0 = {23, 190, 20, 20};
+	SDL_Rect rectCpu1 = {45, 250, 20, 20};
+	SDL_Rect rectCpu2 = {45, 300, 20, 20};
+	SDL_Rect rectCpu3 = {45, 350, 20, 20};
+
+
+	SDL_Color c = {68, 148, 154, 0};
+	SDL_Color y = {248, 244, 188, 0};
 
 
 	SDL_FillRect(_surface, NULL, 0x000000);
 	SDL_BlitSurface(_title, NULL, _surface, &rect1);
-	if (!(_HostInfo = TTF_RenderText_Blended(_font, _hostName.getUserName().c_str(), c)))
+	if (!(_HostInfo = TTF_RenderText_Blended(_font, _hostName.getUserName().c_str(), y)))
 		throw std::logic_error(TTF_GetError());
 	SDL_BlitSurface(_HostInfo, NULL, _surface, &rectname);
 
-	if (!(_HostInfo = TTF_RenderText_Blended(_font, _hostName.getHostName().c_str(), c)))
+	if (!(_HostInfo = TTF_RenderText_Blended(_font, _hostName.getHostName().c_str(), y)))
 		throw std::logic_error(TTF_GetError());
 	SDL_BlitSurface(_HostInfo, NULL, _surface, &recthost);
 
@@ -80,6 +85,10 @@ void	WinSDL::putSDLInfo() {
 	if (!(_OsInfo = TTF_RenderText_Blended(_font, _osInfo.getOSInfo(), c)))
 		throw std::logic_error(TTF_GetError());
 	SDL_BlitSurface(_OsInfo, NULL, _surface, &rectOs);
+
+	if (!(_CpuInfo = TTF_RenderText_Blended(_font, "CPU MODULE", y)))
+		throw std::logic_error(TTF_GetError());
+	SDL_BlitSurface(_CpuInfo, NULL, _surface, &rectCpu0);
 
 	if (!(_CpuInfo = TTF_RenderText_Blended(_font, _cpuInfo.getUserUsage(), c)))
 		throw std::logic_error(TTF_GetError());
@@ -104,6 +113,10 @@ void	WinSDL::putSDLInfo() {
 	if (!(_RamInfo = TTF_RenderText_Blended(_font, _ramInfo.getToatal(), c)))
 		throw std::logic_error(TTF_GetError());
 	SDL_BlitSurface(_RamInfo, NULL, _surface, &rectRam1);
+
+	if (!(_RamInfo = TTF_RenderText_Blended(_font, "RAM MODULE", y)))
+		throw std::logic_error(TTF_GetError());
+	SDL_BlitSurface(_RamInfo, NULL, _surface, &rectRam0);
 
 
 	SDL_UpdateWindowSurface(_win);
@@ -136,7 +149,7 @@ void	WinSDL::SDLInit() {
 		throw std::logic_error(TTF_GetError());
 	if (!(_surface = SDL_GetWindowSurface(_win)))
 		throw std::logic_error(SDL_GetError());
-	if (!(_title = TTF_RenderText_Blended(_font, "ft_gkrellm", c)))
+	if (!(_title = TTF_RenderText_Blended(_font, "FT_GKRELLM", c)))
 		throw std::logic_error(TTF_GetError());
 }
 

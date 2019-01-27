@@ -12,8 +12,6 @@
 
 #ifndef	WINSDL_HPP
 # define WINSDL_HPP
-<<<<<<< HEAD
-
 # include <iostream>
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_ttf.h>
@@ -22,13 +20,12 @@
 #include "OsInfoModule.hpp"
 #include "CpuModule.hpp"
 #include "RamModule.hpp"
-=======
-// # include <SDL2/SDL.h>
-// # include <SDL2/SDL_ttf.h>
->>>>>>> 0f87a0a76a15552cf09bf80736dbbd4417a163af
 
-class WinSDL
-{
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_ttf.h>
+
+
+class WinSDL {
 public:
 	WinSDL();
 	WinSDL(WinSDL const &rhs);
@@ -58,4 +55,3 @@ private:
 };
 
 #endif
-
