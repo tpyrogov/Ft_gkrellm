@@ -19,7 +19,6 @@
 class OsInfoModule : public IMonitorModule {
 public:
 	OsInfoModule();
-	OsInfoModule(std::string const name);
 	OsInfoModule(OsInfoModule const &rhs);
 	~OsInfoModule();
 
