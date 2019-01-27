@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Window.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpohribn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tpyrogov <tpyrogov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 16:53:22 by lpohribn          #+#    #+#             */
-/*   Updated: 2019/01/26 16:53:23 by lpohribn         ###   ########.fr       */
+/*   Updated: 2019/01/27 22:32:59 by tpyrogov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,11 @@ void Window::printCpu(int y, int i) {
 	int color;
 	int j = 0;
 
-	x = 126;
-	mvwprintw(_win, y, 125, "[");
+	x = 121;
+	wattron(this->_win, COLOR_PAIR(3));
+	mvwprintw(_win, y, 120, "[");
+	wattroff(this->_win, COLOR_PAIR(3));
+
 	i = i * 24 / 100;
 	while (j < i) {
 		if (20 < j && j < 24)//red
@@ -122,42 +125,96 @@ void Window::printCpu(int y, int i) {
 	// 	mvwprintw(_win, y, 120 + 1 + i, "|");
 	// }
 	// wattroff(_win, COLOR_PAIR(2));
-	mvwprintw(_win, y, 150, "]");
+	wattron(this->_win, COLOR_PAIR(3));
+	mvwprintw(_win, y, 145, "]");
+	wattroff(this->_win, COLOR_PAIR(3));
 }
 
 void	Window::putCpuModule() {
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 2, 127, "--CPU MODULE--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 6, 122, "User Usage:   %s ", _cpuInfo.getUserUsage());
-	mvwprintw(this->_win, 8, 122, "System Usage: %s", _cpuInfo.getSysUsage());
-	mvwprintw(this->_win, 10, 122, "Idle Usage:   %s", _cpuInfo.getIdleUsage());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 4, 129, "CPU Model:");
+	wattroff(this->_win, COLOR_PAIR(6));
+
+	mvwprintw(this->_win, 6, 122, "%s", _cpuInfo.getModel());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 9, 129, "Avrg. Load:");
+	wattroff(this->_win, COLOR_PAIR(6));
+
+	mvwprintw(this->_win, 11, 127, "%s", _cpuInfo.getLoadAvg());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 14, 129, "Clock Rate:");
+	wattroff(this->_win, COLOR_PAIR(6));
+
+	mvwprintw(this->_win, 16, 131, "%s", _cpuInfo.getClockRate());
+
 	// printCpu(24, 113, 10.0);
-	// wattron(this->_win, COLOR_PAIR(5));
-	mvwprintw(_win, 25, 117, "CPU 1: ");
+	wattron(this->_win, COLOR_PAIR(5));
+	mvwprintw(this->_win, 22, 127, "--CPU USAGE--");
+	wattroff(this->_win, COLOR_PAIR(5));
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(_win, 25, 112, "User: ");
+	wattroff(this->_win, COLOR_PAIR(6));
+
 	printCpu(25, std::atoi( _cpuInfo.getUserUsage()));
-	mvwprintw(_win, 30, 117, "CPU 2: ");
+	mvwprintw(_win, 25, 147, "%s%%", _cpuInfo.getUserUsage());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(_win, 30, 112, "System: ");
+	wattroff(this->_win, COLOR_PAIR(6));
+
 	printCpu(30, std::atoi(_cpuInfo.getSysUsage()));
-	mvwprintw(_win, 35, 117, "CPU 3: ");
+	mvwprintw(_win, 30, 147, "%s%%", _cpuInfo.getSysUsage());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(_win, 35, 112, "Idle: ");
+	wattroff(this->_win, COLOR_PAIR(6));
+
 	printCpu(35, std::atoi(_cpuInfo.getIdleUsage()));
+	mvwprintw(_win, 35, 147, "%s%%", _cpuInfo.getIdleUsage());
 }
 
 void	Window::putRamModule() {
+	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 2, 17, "--RAM MODULE--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 8, 14, "Used memory:   %s", _ramInfo.getRamUsed());
-	mvwprintw(this->_win, 10, 14, "Free memory:   %s", _ramInfo.getRamIdle());
-	mvwprintw(this->_win, 12, 14, "Total memory:  %s", _ramInfo.getToatal());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 4, 18, "Used memory:");
+	wattroff(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 6, 21, "%s", _ramInfo.getRamUsed());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 9, 17, "Unused memory:");
+	wattroff(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 11, 21, "%s", _ramInfo.getRamIdle());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 14, 17, "Total memory:");
+	wattroff(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 16, 21, "%s", _ramInfo.getToatal());
 }
 
 void	Window::putNetwork() {
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 22, 17, "--NETWORKS--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 27, 17, "Packets in:");
-	mvwprintw(this->_win, 28, 17, "%s/%s", _network.getInPacketsNum(), _network.getInPacketsWeight());
-	mvwprintw(this->_win, 30, 17, "Packets out:");
-	mvwprintw(this->_win, 31, 17, "%s/%s", _network.getOutPacketsNum(), _network.getOutPacketsWeight());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 25, 18, "Packets in:");
+	wattroff(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 27, 17, "%s/%s", _network.getInPacketsNum(), _network.getInPacketsWeight());
+
+	wattron(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 31, 18, "Packets out:");
+	wattroff(this->_win, COLOR_PAIR(6));
+	mvwprintw(this->_win, 33, 17, "%s/%s", _network.getOutPacketsNum(), _network.getOutPacketsWeight());
 }
 
 void	Window::putInfo() {
@@ -176,11 +233,11 @@ void	Window::putInfo() {
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 31, 74, "--TIME--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 32, 74, "%s", _date.getTime());
+	mvwprintw(this->_win, 32, 73, "%s", _date.getTime());
 	wattron(this->_win, COLOR_PAIR(5));
 	mvwprintw(this->_win, 34, 73, "--OSNAME--");
 	wattroff(this->_win, COLOR_PAIR(5));
-	mvwprintw(this->_win, 35, 69, "%s", _osInfo.getOSInfo());
+	mvwprintw(this->_win, 35, 68, "%s", _osInfo.getOSInfo());
 	putCpuModule();
 	putRamModule();
 	putNetwork();

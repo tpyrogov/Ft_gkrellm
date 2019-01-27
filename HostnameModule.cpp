@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HostnameModule.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpohribn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tpyrogov <tpyrogov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 14:02:15 by lpohribn          #+#    #+#             */
-/*   Updated: 2019/01/26 14:02:17 by lpohribn         ###   ########.fr       */
+/*   Updated: 2019/01/27 21:56:03 by tpyrogov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,8 @@ std::string HostnameModule::getHostName() {
 
 std::string HostnameModule::getUserName() {
 	return (getenv("USER"));
+}
+
+std::string		HostnameModule::read_from_file(std::string name) {
+	return name;
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   winSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpohribn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tpyrogov <tpyrogov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 10:34:53 by lpohribn          #+#    #+#             */
-/*   Updated: 2019/01/27 10:34:54 by lpohribn         ###   ########.fr       */
+/*   Updated: 2019/01/27 21:17:13 by tpyrogov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	WINSDL_HPP
 # define WINSDL_HPP
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_ttf.h>
+// # include <SDL2/SDL.h>
+// # include <SDL2/SDL_ttf.h>
 
 class WinSDL
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HostnameModule.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpohribn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tpyrogov <tpyrogov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 15:05:32 by lpohribn          #+#    #+#             */
-/*   Updated: 2019/01/26 15:05:34 by lpohribn         ###   ########.fr       */
+/*   Updated: 2019/01/27 21:55:23 by tpyrogov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define HOSTNAMEMODULE_HPP
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class HostnameModule
-{
+class HostnameModule : public IMonitorModule {
 public:
 	HostnameModule();
 	HostnameModule(HostnameModule const &rhs);
@@ -26,6 +26,7 @@ public:
 
 	std::string		getHostName();
 	std::string		getUserName();
+	virtual std::string		read_from_file(std::string name);
 private:
 
 };
