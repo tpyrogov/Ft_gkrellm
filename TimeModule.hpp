@@ -19,7 +19,6 @@
 class TimeModule : public IMonitorModule {
 public:
 	TimeModule();
-	TimeModule(std::string const name);
 	TimeModule(TimeModule const &rhs);
 	~TimeModule();
 	TimeModule &	operator=(TimeModule const & rhs);

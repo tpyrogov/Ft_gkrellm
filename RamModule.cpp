@@ -68,4 +68,19 @@ char *RamModule::getRamIdle() {
 	return (str);
 }
 
+char *RamModule::getToatal() {
+	std::string::size_type sz;
+	int	used = std::stoi(getRamUsed(), &sz);
+	int	idle = std::stoi(getRamIdle(), &sz);
+
+	std::string result = std::to_string(used+ idle);
+
+	result += "M";
+
+	char * str = new char [result.size()];
+	strcpy(str, result.c_str());
+
+	return (str);
+}
+
 

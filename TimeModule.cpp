@@ -20,8 +20,6 @@ TimeModule::TimeModule(TimeModule const &rhs)
 	return;
 }
 
-TimeModule::TimeModule(std::string const name) {}
-
 TimeModule::~TimeModule(void) {}
 
 TimeModule & TimeModule::operator=(TimeModule const &)
@@ -30,5 +28,5 @@ TimeModule & TimeModule::operator=(TimeModule const &)
 }
 
 std::string TimeModule::read_from_file(std::string name) {
-	return std::string();
+	return name;
 }

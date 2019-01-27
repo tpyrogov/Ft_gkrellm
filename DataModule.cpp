@@ -30,21 +30,18 @@ DataModule & DataModule::operator=(DataModule const &)
 }
 
 std::string DataModule::read_from_file(std::string name) {
-	return std::string();
+	return name;
 }
 
 char *DataModule::getTime() {
 	std::time_t  now = time(0);
-	std::string	time;
+	char *buffer = new char[30];
 
 	tm* localtm = localtime(&now);
 
-	time = std::to_string(localtm->tm_hour) + ":" + std::to_string(localtm->tm_min);
+	strftime(buffer,sizeof(buffer),"%H:%M:%S", localtm);
 
-	char * str = new char [time.size()];
-	strcpy(str, time.c_str());
-
-	return (str);
+	return (buffer);
 }
 
 char *DataModule::getDate() {

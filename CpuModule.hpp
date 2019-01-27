@@ -21,7 +21,6 @@
 class CpuModule : public IMonitorModule {
 public:
 	CpuModule();
-	CpuModule(std::string const name);
 	CpuModule(CpuModule const &rhs);
 	virtual ~CpuModule();
 

@@ -19,7 +19,6 @@
 class NetworkModule : public IMonitorModule{
 public:
 	NetworkModule();
-
 	NetworkModule(NetworkModule const &rhs);
 	~NetworkModule();
 	NetworkModule &	operator=(NetworkModule const & rhs);

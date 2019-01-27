@@ -27,6 +27,7 @@ public:
 
 	char	*getRamUsed();
 	char	*getRamIdle();
+	char	*getToatal();
 private:
 
 };
