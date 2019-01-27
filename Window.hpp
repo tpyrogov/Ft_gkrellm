@@ -14,6 +14,8 @@
 # define WINDOW_HPP
 
 #include <iostream>
+#include "OsInfoModule.hpp"
+#include "CpuModule.hpp"
 #include <ncurses.h>
 
 # define L1 "        /\\_/\\  /\\"
@@ -52,10 +54,13 @@ public:
 	void	RamMod();
 	void	NetMod();
 	void	printExtraInfo();
+	void	putInfo();
 
 private:
 	WINDOW *_win;
-
+	OsInfoModule osInfo;
+	CpuModule	 cpuInfo;
+	char *tab;
 };
 
 #endif

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorModule.cpp                                 :+:      :+:    :+:   */
+/*   winSDL.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpohribn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/26 12:56:20 by lpohribn          #+#    #+#             */
-/*   Updated: 2019/01/26 12:56:21 by lpohribn         ###   ########.fr       */
+/*   Created: 2019/01/27 10:34:53 by lpohribn          #+#    #+#             */
+/*   Updated: 2019/01/27 10:34:54 by lpohribn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMonitorModule.hpp"
+#ifndef	WINSDL_HPP
+# define WINSDL_HPP
 
-IMonitorModule::IMonitorModule () {}
-
-IMonitorModule::IMonitorModule(IMonitorModule const &rhs) 
+class WinSDL
 {
-	*this = rhs;
-	return;
-}
+public:
+	WinSDL();
+	// WinSDL(std::string const name);
+	WinSDL(WinSDL const &rhs);
+	~WinSDL();
+	WinSDL &	operator=(WinSDL const & rhs);
 
-// IMonitorModule::IMonitorModule(std::string const name) {}
+	void	InitScreen();
+	void	createWin();
+	void	keyEvents();
+	void	HostnameMod();
+	void	OsInfoMod();
+	void	TimeMod();
+	void	CpuMod();
+	void	RamMod();
+	void	NetMod();
+	void	printExtraInfo();
 
-IMonitorModule::~IMonitorModule(void) {}
+private:
+	Window *_win;
 
-IMonitorModule & IMonitorModule::operator=(IMonitorModule const &)
-{
-	return (*this);
-}
+};
+
+#endif
 
