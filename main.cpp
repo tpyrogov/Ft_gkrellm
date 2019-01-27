@@ -12,17 +12,32 @@
 
 #include "CpuModule.hpp"
 #include "Window.hpp"
+#include "winSDL.hpp"
 
-int	main() {
-	CpuModule os;
-	Window	win;
-	win.InitScreen();
-	while (42)
+int	main(int argc, char **argv) {
+	if (argc == 1)
 	{
-		win.createWin();
-		win.putInfo();
-		win.keyEvents();
+		Window	win;
+		win.InitScreen();
+		while (42)
+		{
+			win.createWin();
+			win.putInfo();
+			win.keyEvents();
+		}
 	}
-	// std::cout << s << std::endl << os.getUserUsage() << std::endl << os.getSysUsage() ;
+	if (argc == 2 && strcmp(argv[1], "-sdl"))
+	{
+		WinSDL win;
+		win.SDLInit();
+		while (42)
+		{
+			win.DrawGameName();
+			// win.putSDLInfo();
+			// win.SDLEvents();
+		}
+	}
+	else
+		return 0;
 	return 0;
 }

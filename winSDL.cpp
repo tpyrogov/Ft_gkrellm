@@ -31,14 +31,15 @@ WinSDL & WinSDL::operator=(WinSDL const &)
 	return (*this);
 }
 
-void	WinSDL::putSDLInfo() {
+// void	WinSDL::putSDLInfo() {
 
-	if (!(d->text_p1 = TTF_RenderText_Blended(_font2, d->p1,
-	(SDL_Color){68, 148, 154, 0})))
-	SDL_BlitSurface(d->text_p1, NULL, d->s, &(SDL_Rect){230, 90, 20, 20});
-	SDL_FreeSurface(d->text_p1);
-	SDL_UpdateWindowSurface(_win);
-}
+// 	SDL_Rect rect = {230, 90, 20, 20};
+
+// 	if (!(d->text_p1 = TTF_RenderText_Blended(_font2, d->p1,
+// 	(SDL_Color){68, 148, 154, 0})))
+// 	SDL_BlitSurface(d->text_p1, NULL, d->s, &rect);
+// 	SDL_FreeSurface(d->text_p1);
+// }
 
 void	WinSDL::SDLInit() {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -57,10 +58,10 @@ void	WinSDL::SDLInit() {
 }
 
 void	WinSDL::DrawGameName() {
-	SDL_UpdateWindowSurface(_win);
+	SDL_Rect rect = {10, 10, 50, 50};
+
 	_title = TTF_RenderText_Blended(_font, "ft_gkrellm",
 	(SDL_Color){255, 204, 204, 0});
-	SDL_BlitSurface(_title, NULL, _surface, &(SDL_Rect){10, 10, 50, 50});
-	SDL_FreeSurface(_surface);
-
+	SDL_BlitSurface(_title, NULL, _surface, &rect);
+	SDL_UpdateWindowSurface(_win);
 }

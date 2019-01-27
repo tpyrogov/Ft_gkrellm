@@ -37,11 +37,11 @@ private:
 	SDL_Surface	*_HostInfo;
 	SDL_Surface	*_Date;
 	
-	OsInfoModule _osInfo;
-	CpuModule	 _cpuInfo;
-	HostnameModule _hostName;
-	DataModule	_date;
-	RamModule	_ramInfo;
+	// OsInfoModule _osInfo;
+	// CpuModule	 _cpuInfo;
+	// HostnameModule _hostName;
+	// DataModule	_date;
+	// RamModule	_ramInfo;
 };
 
 #endif
