@@ -20,7 +20,7 @@ IMonitorModule::IMonitorModule(IMonitorModule const &rhs)
 	return;
 }
 
-// IMonitorModule::IMonitorModule(std::string const name) {}
+IMonitorModule::IMonitorModule(std::string const name) {}
 
 IMonitorModule::~IMonitorModule(void) {}
 

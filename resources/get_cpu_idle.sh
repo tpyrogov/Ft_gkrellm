@@ -1,0 +1,1 @@
+top -l 1 -n 0 | grep "CPU usage:" | cut -d' ' -f5

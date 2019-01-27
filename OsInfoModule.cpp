@@ -22,7 +22,7 @@ OsInfoModule::OsInfoModule(OsInfoModule const &rhs)
 	return;
 }
 
-// OsInfoModule::OsInfoModule(std::string const name) {}
+OsInfoModule::OsInfoModule(std::string const name) {}
 
 OsInfoModule::~OsInfoModule(void) {
 
@@ -34,7 +34,20 @@ OsInfoModule & OsInfoModule::operator=(OsInfoModule const &)
 }
 
 char	*OsInfoModule::getOSInfo() {
-	std::system("sw_vers > temp");
+	std::string result;
+
+	result = read_from_file("get_os_info.sh");
+
+	char * str = new char [result.size()];
+	strcpy(str, result.c_str());
+	return (str);
+}
+
+std::string OsInfoModule::read_from_file(std::string name) {
+	name.append(" > temp");
+	std::string command = "sh ./resources/";
+	command.append(name);
+	std::system(command.c_str());
 	std::ifstream	file("temp", std::ios::in);
 	std::string		result = "";
 	std::string		word;
@@ -42,12 +55,10 @@ char	*OsInfoModule::getOSInfo() {
 	if (file) {
 
 		while (getline(file, word))
-			result += (word + "\n");
+			result += (word + " ");
 
 		file.close();
 	}
 	remove("temp");
-	char * str = new char [result.size()];
-	strcpy(str, result.c_str());
-	return (str);
+	return (result);
 }

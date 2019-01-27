@@ -14,9 +14,9 @@
 # define OSINFOMODULE_HPP
 
 #include <iostream>
+#include "IMonitorModule.hpp"
 
-class OsInfoModule
-{
+class OsInfoModule : public IMonitorModule {
 public:
 	OsInfoModule();
 	OsInfoModule(std::string const name);
@@ -24,6 +24,8 @@ public:
 	~OsInfoModule();
 
 	OsInfoModule &	operator=(OsInfoModule const & rhs);
+
+	virtual std::string		read_from_file(std::string name);
 
 	char *		getOSInfo();
 private:

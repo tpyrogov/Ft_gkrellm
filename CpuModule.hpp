@@ -32,6 +32,9 @@ public:
 	char *		getUserUsage();
 	char *		getSysUsage();
 	char *		getIdleUsage();
+	char *		getClockRate();
+
+	int		getCoreNumber();
 
 private:
 
