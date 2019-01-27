@@ -50,7 +50,7 @@ char *DataModule::getDate() {
 
 	tm* localtm = localtime(&now);
 
-	strftime(buffer,sizeof(buffer),"%d.%m.%y ", localtm);
+	strftime(buffer,sizeof(buffer),"%d.%m.%y", localtm);
 
 	return (buffer);
 }
